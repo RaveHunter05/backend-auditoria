@@ -6,7 +6,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 
 // deprecated
-// const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 
 const compression = require('compression')
 const dotenv = require('dotenv').config()
@@ -18,6 +18,9 @@ app.use(cors())
 app.use(helmet())
 app.use(compression())
 app.use(expressIp().getIpInfoMiddleware);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 const port = process.env.PORT || 8000
 
