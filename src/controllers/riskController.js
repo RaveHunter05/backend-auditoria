@@ -17,6 +17,18 @@ const riskController = {
                 message: 'there was an error in controller'
             })
         }
+    },
+    async getAll(req, res){
+        try {
+            const risks = await Risk.findAndCountAll()
+
+            return res.status(200).json({risks})
+        } catch (error) {
+            console.error(error)
+            res.status(404).json({
+                message: 'there was an error in controller'
+            })
+        }
     }
 }
 

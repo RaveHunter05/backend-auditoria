@@ -38,6 +38,9 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      price: {
+        type: Sequelize.DECIMAL(20,2)
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     riskId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     controlId: DataTypes.INTEGER,
-    description: DataTypes.TEXT
+    description: DataTypes.TEXT,
+    price: DataTypes.DECIMAL(20,2)
   }, {
     sequelize,
     modelName: 'Incidence',
