@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: {
           name: 'causeId'
         }
+      }),
+      Cause.belongsTo(models.Risk, {
+        foreignKey: {
+          name: 'riskId'
+        },
+        onDelete:'CASCADE'
       })
     }
   };

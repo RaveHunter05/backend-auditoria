@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: {
           name: 'riskId'
         }
+      }),
+      Risk.hasMany(models.Cause, {
+        foreignKey: {
+          name: 'riskId'
+        }
       })
     }
   };
