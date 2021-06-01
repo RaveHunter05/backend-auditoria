@@ -1,0 +1,66 @@
+{
+	"create a new table": {
+		"prefix": "cr-table",
+		"body": [
+		  "await queryInterface.createTable('${1:tableName}', {",
+		  "      id: {",
+		  "        allowNull: false,",
+		  "        autoIncrement: true,",
+		  "        primaryKey: true,",
+		  "        type: Sequelize.INTEGER",
+		  "      },",
+		  "      ${2:newColumns}",
+		  "      createdAt: {",
+		  "        allowNull: false,",
+		  "        type: Sequelize.DATE",
+		  "      },",
+		  "      updatedAt: {",
+		  "        allowNull: false,",
+		  "        type: Sequelize.DATE",
+		  "      }",
+		  "});"
+		],
+		"description": "create a new table"
+	},
+	"delete a new table": {
+		"prefix": "dl-table",
+		"body": [
+		  "await queryInterface.dropTable('${1:tableName}');"
+		],
+		"description": "delete a new table"
+	},
+	"add column": {
+		"prefix": "addc",
+		"body": [
+			"const transaction = await queryInterface.sequelize.transaction();",
+			"    try {",
+			"      await queryInterface.addColumn(",
+			"        {",
+			"          type: Sequelize.DataTypes.${2:element},",
+			"        },",
+			"        { transaction }",
+			"      );",
+			"      await transaction.commit();",
+			"    } catch (err) {",
+			"      await transaction.rollback();",
+			"      throw err;",
+			"    }"
+		],
+		"description": "add column in migration"
+	},
+	
+	"remove column": {
+		"prefix": "rmc",
+		"body": [
+			" const transaction = await queryInterface.sequelize.transaction();",
+			"    try{",
+			"      await queryInterface.removeColumn(, {transaction})",
+			"    }",
+			"    catch(err){",
+			"      await transaction.rollback();",
+			"      throw err;",
+			"    }"
+		],
+		"description": "remove column in migration"
+	}
+}
